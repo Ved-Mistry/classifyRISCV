@@ -30,7 +30,7 @@ matmul:
     ble a5 x0 err
     bne a2 a4 err
     
-    addi sp sp -44
+    addi sp sp -48
     sw s0 0(sp)
     sw s1 4(sp)
     sw s2 8(sp)
@@ -42,6 +42,7 @@ matmul:
     sw s8 32(sp)
     sw s9 36(sp)
     sw s10 40(sp)
+    sw s11 44(sp)
     
     mv s0 a0
     mv s1 a1 #num rows
@@ -57,6 +58,7 @@ matmul:
     mv s8 a2
     mv s9 a4
     mv s10 a6
+    mv s11 a6
     j inner_loop_start
 
 err:
@@ -73,6 +75,7 @@ inner_loop_start:
     mv a2 s8
     addi a3 x0 1
     mv a4 s9
+    mv a5 s11
     
     add a0 s0 s2
     addi s5 s5 1 #add to total cols covered
@@ -93,6 +96,7 @@ outer_loop_end:
     bge s4 s1 done #check if all rows have been covered
 
 done:
+    mv a6 s11
     mv ra s7
     mv s0 x0
     mv s1 x0
@@ -105,5 +109,6 @@ done:
     mv s8 x0
     mv s9 x0
     mv s10 x0
-    addi sp sp 44
+    mv s11 x0
+    addi sp sp 48
     jr ra
