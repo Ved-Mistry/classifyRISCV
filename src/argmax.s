@@ -15,16 +15,29 @@
 #     this function terminates the program with error code 36
 # =================================================================
 argmax:
-    # Prologue
-
-
+    add t0 x0 x0
+    add t1 x0 x0
+    lw t3 0(a0)
+    bgt a1 x0 loop_start
+    li a0 36
+    j exit
+    
 loop_start:
-
+    lw t2 0(a0)
+    bgt t2 t3 loop_continue
+    j loop_end
 
 loop_continue:
-
-
+    add t1 t0 x0
+    add t3 t2 x0
+    j loop_end
+    
 loop_end:
-    # Epilogue
+    addi t0 t0 1
+    addi a0 a0 4
+    ble a1 t0 done
+    j loop_start
 
+done:
+    add a0 t1 x0
     jr ra
