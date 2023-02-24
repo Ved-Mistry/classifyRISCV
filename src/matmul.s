@@ -44,21 +44,22 @@ matmul:
     sw s10 40(sp)
     sw s11 44(sp)
     
-    mv s0 a0
+    mv s0 a0 #first matrix
     mv s1 a1 #num rows
-    add s2 x0 x0
-    mv s3 a3
+    add s2 x0 x0 #row mover
+    mv s3 a3 #second matrix
     add s4 x0 x0 #rows covered
     add s5 x0 x0 #columns covered
     addi s6 x0 4 #size of int
-    mv a1 a3
-    addi a3 x0 1
-    mv a4 a5 #num cols
     mv s7 ra
     mv s8 a2
-    mv s9 a4
+    mv s9 a5
     mv s10 a6
     mv s11 a6
+    
+    mv a1 a3 #
+    addi a3 x0 1
+    mv a4 a5 #num cols
     j inner_loop_start
 
 err:
