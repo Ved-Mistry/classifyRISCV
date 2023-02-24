@@ -51,11 +51,11 @@ matmul:
     add s4 x0 x0 #rows covered
     add s5 x0 x0 #columns covered
     addi s6 x0 4 #size of int
-    mv s7 ra
+    mv s7 a6
     mv s8 a2
     mv s9 a5
     mv s10 a6
-    mv s11 a6
+    mv s11 ra
     
     mv a1 a3 #
     addi a3 x0 1
@@ -76,7 +76,6 @@ inner_loop_start:
     mv a2 s8
     addi a3 x0 1
     mv a4 s9
-    mv a5 s11
     
     add a0 s0 s2
     addi s5 s5 1 #add to total cols covered
@@ -97,19 +96,19 @@ outer_loop_end:
     bge s4 s1 done #check if all rows have been covered
 
 done:
-    mv a6 s11
-    mv ra s7
-    mv s0 x0
-    mv s1 x0
-    mv s2 x0
-    mv s3 x0
-    mv s4 x0
-    mv s5 x0
-    mv s6 x0
-    mv s7 x0
-    mv s8 x0
-    mv s9 x0
-    mv s10 x0
-    mv s11 x0
+    lw a6 0(s7)
+    mv ra s11
+    lw s0 0(sp)
+    lw s1 4(sp)
+    lw s2 8(sp)
+    lw s3 12(sp)
+    lw s4 16(sp)
+    lw s5 20(sp)
+    lw s6 24(sp)
+    lw s7 28(sp)
+    lw s8 32(sp)
+    lw s9 36(sp)
+    lw s10 40(sp)
+    lw s11 44(sp)
     addi sp sp 48
     jr ra
