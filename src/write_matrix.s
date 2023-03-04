@@ -114,6 +114,11 @@ err30:
     j exit
     
 done:
+    mv a0 s9
+    jal free
+    mv a0 s8
+    jal free
+
     lw s0 0(sp)
     lw s1 4(sp)
     lw s2 8(sp)
