@@ -237,8 +237,8 @@ done:
     #jal free
     #mv a0 s4
     #jal free
-    mv a0 s3
-    jal free
+    #mv a0 s3
+    #jal free
     #mv a0 s2
     #jal free
     #mv a0 s1
