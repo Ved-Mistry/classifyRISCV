@@ -241,10 +241,10 @@ done:
     #jal free BAD
     mv a0 s2
     jal free
-    mv a0 s1
-    jal free
-    mv a0 s0
-    jal free
+    #mv a0 s1
+    #jal free
+    #mv a0 s0
+    #jal free
    
     mv a0 s6
    
