@@ -229,14 +229,6 @@ done:
     jal free
     mv a0 s9
     jal free
-    mv a0 s8
-    jal free
-    mv a0 s5
-    jal free
-    mv a0 s10
-    jal free
-    mv a0 s4
-    jal free
     
     mv a0 s6
    
@@ -257,14 +249,3 @@ done:
     addi sp sp 56
     
     jr ra
-
-
-
-
-
-
-
-
-
-
-
